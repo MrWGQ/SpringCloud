@@ -12,7 +12,14 @@ public class UserController {
 
     @PostMapping(value = "/hello")
     public String sayHello(@RequestParam String name){
-          return "Hello !" + name;
+        System.out.println("访问到 user 服务 hello方法:"+System.currentTimeMillis());
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("访问到 user 服务 hello方法，休眠结束:"+System.currentTimeMillis());
+        return "Hello !" + name;
     }
 
 }
