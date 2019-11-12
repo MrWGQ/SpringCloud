@@ -15,7 +15,7 @@ public class UserController {
         long currentTimeMillis = System.currentTimeMillis();
         System.out.println("访问到 user 服务 hello方法:"+currentTimeMillis);
         try {
-            Thread.sleep(5000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
