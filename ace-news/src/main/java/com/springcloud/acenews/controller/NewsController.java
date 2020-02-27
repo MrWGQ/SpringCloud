@@ -1,25 +1,28 @@
 package com.springcloud.acenews.controller;
 
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.date.TimeInterval;
 import com.springcloud.acenews.feign.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/news")
 public class NewsController {
 
-    @Autowired
+    @Resource
     private UserService userService;
 
-    @PostMapping("/dyn")
+    @GetMapping("/dyn")
     public String dynamicNews(@RequestParam String name){
-        System.out.println(System.currentTimeMillis());
-        return "good news!" + userService.sayHello(name);
+        TimeInterval timer = DateUtil.timer();
+        String sayHello = userService.sayHello(name);
+        System.out.println("耗时: "+timer.intervalSecond());
+        return sayHello;
     }
 
 }

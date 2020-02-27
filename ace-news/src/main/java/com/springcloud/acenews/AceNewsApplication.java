@@ -25,7 +25,7 @@ public class AceNewsApplication {
     }
 
 
-    @Bean
+   /* @Bean
     public ServletRegistrationBean getServlet() {
         HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
         ServletRegistrationBean registrationBean = new ServletRegistrationBean(streamServlet);
@@ -33,5 +33,5 @@ public class AceNewsApplication {
         registrationBean.addUrlMappings("/hystrix.stream");
         registrationBean.setName("HystrixMetricsStreamServlet");
         return registrationBean;
-    }
+    }*/
 }
